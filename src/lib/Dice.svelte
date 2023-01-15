@@ -7,12 +7,26 @@
 
 <main>
     <div class="dice" style:left={x} style:top={y}>
-        <img src="/{map[number-1]}.png" alt="dice" height="70px" width="70px"/>
+        <img class="dice-img" src="/{map[number-1]}.png" alt="dice" />
     </div>
 </main>
 
 <style>
     .dice {
         position: absolute;
+        transform: rotate(var(--rotate));
     }
+
+    .dice-img {
+        height: 70px;
+        width: 70px;
+    }
+
+    @media screen and (max-width: 900px) {
+    .dice-img {
+      height: 35px;
+      width: 35px;
+      }
+    }
+
 </style>
