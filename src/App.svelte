@@ -13,11 +13,15 @@
   ]
 
   let diceAmount = 5;
-  let diceNumbers = []
-  let dicePositions = []
-  let rotate = []
+  let diceNumbers = [];
+  let dicePositions = [];
+  let rotate = [];
+
+  let logStack = [];
+  let logVisible = false;
 
   function rollDice() {
+    logAction(`Dice Roll (${diceAmount} dice)`);
     diceNumbers = [];
     dicePositions = [];
     rotate = [];
@@ -42,6 +46,7 @@
 
   function removeDice() {
     if (diceAmount > 0) {
+      logAction(`Dice Removed, ${diceAmount} dice left`);
       diceNumbers.pop();
       dicePositions.pop();
       rotate.pop();
@@ -53,12 +58,20 @@
   }
 
   function resetDice() {
+    logAction(`Dice Reset.`);
     if (diceAmount < 5) {
       diceAmount = 5;
       rollDice();
     }
   }
 
+  function logAction(action) {
+    let timeNow = new Date();
+    logStack.push(`[${timeNow.toLocaleTimeString('en-US')}] - ${action}`);
+    console.log(logStack);
+  }
+
+  logAction(`Game started.`);
   rollDice();
 </script>
 
@@ -67,6 +80,7 @@
     <button on:click={removeDice}>Remove Dice</button>
     <button on:click={rollDice} id="reroll">Roll Again</button>
     <button on:click={resetDice}>Reset Dice</button>
+    <button on:click={() => {logVisible = true}}>Show Log</button>
   </div>
   <div class="dice-box">
     <!-- {#each positions as dice}
@@ -76,6 +90,16 @@
       <Dice number={dice} x={dicePositions[i][0]} y={dicePositions[i][1]} --rotate={rotate[i]}/>
     {/each}
   </div>
+  {#if logVisible}
+  <div class="log">
+    <div class="buttons">
+      <button on:click={() => {logVisible = false}}>Hide Log</button>
+    </div>
+    {#each logStack as logItem, i}
+      <div>{logItem}</div>
+    {/each}
+  </div>
+  {/if}
 </main>
 
 <style>
@@ -106,6 +130,24 @@
     left: 50%;
     top: 55%;
     transform: translate(-50%, -50%);
+  }
+
+  .log {
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex;
+    box-sizing: border-box;
+    padding: 10%;
+    flex-direction: column;
+    overflow-y: scroll;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: 900px) {
