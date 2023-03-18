@@ -3,13 +3,13 @@
 
   const positions = [
     ["48%", "47%"],
-    ["58%", "45%"],
+    ["66%", "48%"],
     ["33%", "35%"],
-    ["59%", "34%"],
-    ["38%", "55%"],
-    ["45%", "37%"],
-    ["47%", "27%"],
-    ["35%", "45%"],
+    ["59%", "32%"],
+    ["30%", "55%"],
+    ["47%", "62%"],
+    // ["20%", "25%"],
+    // ["25%", "55%"],
   ]
 
   let diceAmount = 5;
@@ -75,7 +75,7 @@
   rollDice();
 </script>
 
-<main>
+<main class="main">
   <div class="buttons">
     <button style="background-color: orange; color: black;" on:click={removeDice}>Remove</button>
     <button style="background-color: green; color: white;" on:click={rollDice} id="reroll">Roll</button>
@@ -92,7 +92,7 @@
   </div>
   {#if logVisible}
   <div class="log">
-    <div class="buttons">
+    <div class="buttons" style="margin-bottom: 10px;">
       <button on:click={() => {logVisible = false}}>Hide Log</button>
     </div>
     {#each logStack as logItem, i}
@@ -103,6 +103,17 @@
 </main>
 
 <style>
+
+  .main {
+    display: flex;
+    width: 100%;
+    /* height: 100%; */
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
 
   button {
     padding: 10px;
@@ -116,10 +127,10 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    /* position: absolute; */
+    /* top: 8%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, 0%); */
     color: white;
     width: 70%;
     justify-content: center;
@@ -131,17 +142,17 @@
     background-color: purple;
     border: 10px solid lightblue;
     border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    /* left: 50%; */
+    /* top: 55%; */
+    /* transform: translate(-50%, -50%); */
   }
 
   .log {
     position: absolute;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
+    /* left: 50%; */
+    /* right: 50%; */
+    /* transform: translate(-50%, -50%); */
     background-color: black;
     height: 100%;
     width: 100%;
@@ -153,12 +164,13 @@
     overflow-y: scroll;
     justify-content: center;
     align-items: center;
+    z-index: 2;
   }
 
   @media screen and (max-width: 900px) {
     .dice-box {
-      height: 400px;
-      width: 400px;
+      height: 380px;
+      width: 380px;
       }
     }
 </style>
