@@ -77,10 +77,10 @@
 
 <main>
   <div class="buttons">
-    <button on:click={removeDice}>Remove Dice</button>
-    <button on:click={rollDice} id="reroll">Roll Again</button>
-    <button on:click={resetDice}>Reset Dice</button>
-    <button on:click={() => {logVisible = true}}>Show Log</button>
+    <button style="background-color: orange; color: black;" on:click={removeDice}>Remove</button>
+    <button style="background-color: green; color: white;" on:click={rollDice} id="reroll">Roll</button>
+    <button style="background-color: red; color: white;" on:click={resetDice}>Reset</button>
+    <button on:click={() => {logVisible = true}}>Log</button>
   </div>
   <div class="dice-box">
     <!-- {#each positions as dice}
@@ -106,25 +106,30 @@
 
   button {
     padding: 10px;
-    min-width: 100px;;
+    min-width: 100px;
     background-color: blanchedalmond;
-    font-size: 16px;
+    font-size: 18px;
+    border-color: grey;
   }
 
   .buttons {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
     position: absolute;
-    top: 10%;
+    top: 8%;
     left: 50%;
     transform: translate(-50%, 0%);
     color: white;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
   }
   .dice-box {
     height: 50rem;
     width: 50rem;
-    background-color: brown;
-    border: 10px solid grey;
+    background-color: purple;
+    border: 10px solid lightblue;
     border-radius: 50%;
     position: absolute;
     left: 50%;

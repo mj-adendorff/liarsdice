@@ -24,8 +24,8 @@
 
     @media screen and (max-width: 900px) {
     .dice-img {
-      height: 35px;
-      width: 35px;
+      height: 38px;
+      width: 38px;
       }
     }
 
