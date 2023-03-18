@@ -93,7 +93,7 @@
   {#if logVisible}
   <div class="log">
     <div class="buttons" style="margin-bottom: 10px;">
-      <button on:click={() => {logVisible = false}}>Hide Log</button>
+      <button style="position: fixed; top: 10%;" on:click={() => {logVisible = false}}>Hide Log</button>
     </div>
     {#each logStack as logItem, i}
       <div>{logItem}</div>
